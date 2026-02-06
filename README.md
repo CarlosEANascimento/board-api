@@ -1,6 +1,6 @@
 # Board Management API
 
-[English](README.en.md) | [Português](README.pt-BR.md)
+[English](README.md) | [Português](README.pt-BR.md)
 
 This project is a RESTful API developed in Java using Spring Boot, designed to manage Boards, Columns, and Cards following a Kanban-style workflow. It was created as a final module project for DIO, focusing on clean architecture, good practices, and real-world backend patterns.
 
