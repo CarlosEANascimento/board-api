@@ -4,7 +4,7 @@ import java.util.*;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "columns")
+@Table(name = "board_columns")
 public class Columns {
     
     @Id
@@ -18,7 +18,7 @@ public class Columns {
     private Integer position;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "column_type", nullable = false)
     private Status status;
 
     @ManyToOne
@@ -27,11 +27,61 @@ public class Columns {
 
     @OneToMany(mappedBy = "column")
     private List<Card> cards = new ArrayList<>();
-}
 
-enum Status {
-    INICIAL,
-    PENDENTE,
-    FINAL,
-    CANCELADO
+    public Columns() {}
+
+    public Columns(String name, Integer position, Status status, Board board) {
+        this.name = name;
+        this.position = position;
+        this.status = status;
+        this.board = board;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
 }

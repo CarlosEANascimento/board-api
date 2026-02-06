@@ -2,6 +2,9 @@ package projeto.board.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CardBlockedRepository extends JpaRepository<Card, Long> {
-    
+import java.util.List;
+
+public interface CardBlockedRepository extends JpaRepository<CardBlocked, Long> {
+    CardBlocked findByCard_IdAndUnblockedAtIsNull(Long cardId);
+    List<CardBlocked> findByCard_IdOrderByBlockedAtAsc(Long cardId);
 }
