@@ -4,6 +4,9 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projeto.board.exception.BoardNotFoundException;
@@ -15,6 +18,15 @@ public class BoardServiceImpl implements BoardService {
 
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ColumnRepository columnRepository;
+
+    @Autowired
+    private CardRepository cardRepository;
+
+    @Autowired
+    private CardBlockedRepository cardBlockedRepository;
 
     @Override
     @Transactional
@@ -56,6 +68,17 @@ public class BoardServiceImpl implements BoardService {
         log.info("Deleting board with id: {}", boardId);
 
         if(boardRepository.existsById(boardId)) {
+            List<Columns> columns = columnRepository.findByBoard_Id(boardId);
+
+            columns.forEach(col -> {
+                col.getCards().forEach(card -> {
+                    cardBlockedRepository.deleteByCard_Id(card.getId());
+                });
+
+                cardRepository.deleteByColumn_Id(col.getId());
+            });
+
+            columnRepository.deleteByBoard_Id(boardId);
             boardRepository.deleteById(boardId);
             log.info("Board deleted successfully with id: {}", boardId);
         } else {

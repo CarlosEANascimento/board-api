@@ -13,7 +13,6 @@ import projeto.board.dto.CardRequestDTO;
 import projeto.board.dto.CardResponseDTO;
 import projeto.board.mapper.BoardMapper;
 import projeto.board.model.Card;
-import projeto.board.model.CardRepository;
 import projeto.board.services.CardService;
 
 import java.util.List;
@@ -23,17 +22,11 @@ import java.util.List;
 @RequestMapping("/cards")
 public class CardController {
 
-    private final CardRepository cardRepository;
-
     @Autowired
     private CardService cardService;
 
     @Autowired
     private BoardMapper boardMapper;
-
-    CardController(CardRepository cardRepository) {
-        this.cardRepository = cardRepository;
-    }
 
     // create
     @PostMapping("/{boardId}/new")

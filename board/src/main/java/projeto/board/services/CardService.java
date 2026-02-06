@@ -1,6 +1,5 @@
 package projeto.board.services;
 
-import projeto.board.dto.CardBlockedResponseDTO;
 import projeto.board.dto.CardRequestDTO;
 import projeto.board.model.Card;
 import projeto.board.model.CardBlocked;

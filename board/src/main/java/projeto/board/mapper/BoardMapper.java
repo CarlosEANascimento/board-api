@@ -1,7 +1,5 @@
 package projeto.board.mapper;
 
-import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Component;
 import projeto.board.dto.BoardResponseDTO;
 import projeto.board.dto.CardBlockedResponseDTO;

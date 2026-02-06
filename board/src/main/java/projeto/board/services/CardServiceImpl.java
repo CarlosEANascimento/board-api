@@ -4,13 +4,10 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import projeto.board.dto.CardBlockedResponseDTO;
 import projeto.board.dto.CardRequestDTO;
-import projeto.board.dto.CardResponseDTO;
 import projeto.board.exception.BoardNotFoundException;
 import projeto.board.exception.CardNotFoundException;
 import projeto.board.exception.ColumnNotFoundException;
-import projeto.board.mapper.BoardMapper;
 import projeto.board.model.*;
 
 import java.time.LocalDateTime;

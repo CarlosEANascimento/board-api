@@ -14,8 +14,6 @@ import projeto.board.mapper.BoardMapper;
 import projeto.board.model.Board;
 import projeto.board.services.BoardServiceImpl;
 
-import jakarta.validation.Valid;
-
 @Slf4j
 @RestController
 @RequestMapping("/boards")
